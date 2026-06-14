@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sid Pandey · AI Strategy, Delivery and Governance · Multi-Regulated, Safety-Critical Industries</title>
+<meta name="description" content="Sid Pandey is an AI, data and transformation leader helping regulated organisations move from AI ambition to governed, executive-ready delivery.">
+<meta property="og:title" content="Sid Pandey · AI Strategy and Governed Delivery">
+<meta property="og:description" content="AI adoption, data leadership and governance for regulated, safety-critical environments.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://siddhartha27-web.github.io/">
+<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -33,18 +39,22 @@
   .nav-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
   @media(max-width:820px){.nav-links{display:none}}
 
-  header{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 0 80px;overflow:hidden}
+  header{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:124px 0 68px;overflow:hidden}
   header::after{content:"";position:absolute;top:-20%;right:-10%;width:60%;height:120%;background:radial-gradient(ellipse at center,rgba(31,58,95,.07),transparent 62%);pointer-events:none;z-index:0}
+  header::before{content:"";position:absolute;inset:auto 0 0 0;height:32%;background:linear-gradient(180deg,transparent,rgba(255,253,248,.62));pointer-events:none}
+  .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(320px,.72fr);gap:58px;align-items:center}
+  @media(max-width:960px){.hero-grid{grid-template-columns:1fr;gap:42px}}
+  .hero-copy{min-width:0}
   .hero-tag{font-family:var(--mono);font-size:12.5px;letter-spacing:.22em;color:var(--accent-2);text-transform:uppercase;margin-bottom:30px;display:flex;align-items:center;gap:14px;opacity:0;animation:rise .8s .1s forwards}
   .hero-tag::before{content:"";width:40px;height:1px;background:var(--accent-2)}
-  h1{font-family:var(--display);font-weight:500;font-size:clamp(2.5rem,6.4vw,5.2rem);line-height:1.04;letter-spacing:-.02em;margin-bottom:34px;max-width:16ch}
+  h1{font-family:var(--display);font-weight:500;font-size:clamp(2.7rem,6vw,5.35rem);line-height:1.02;letter-spacing:-.02em;margin-bottom:30px;max-width:13ch}
   h1 .em{font-style:italic;color:var(--accent-2)}
   h1 span{display:block;opacity:0;animation:rise .9s forwards}
   h1 span:nth-child(1){animation-delay:.2s}
   h1 span:nth-child(2){animation-delay:.32s}
   h1 span:nth-child(3){animation-delay:.44s}
   h1 span:nth-child(4){animation-delay:.56s}
-  .hero-sub{font-size:clamp(1.05rem,1.7vw,1.3rem);color:var(--text-dim);max-width:62ch;line-height:1.62;margin-bottom:46px;font-weight:400;opacity:0;animation:rise .9s .68s forwards}
+  .hero-sub{font-size:clamp(1.04rem,1.55vw,1.22rem);color:var(--text-dim);max-width:66ch;line-height:1.62;margin-bottom:34px;font-weight:400;opacity:0;animation:rise .9s .68s forwards}
   .hero-sub strong{color:var(--text);font-weight:600}
   .hero-actions{display:flex;gap:18px;flex-wrap:wrap;opacity:0;animation:rise .9s .82s forwards}
   .btn{font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.02em;padding:15px 28px;border-radius:3px;transition:all .22s;cursor:pointer;display:inline-flex;align-items:center;gap:10px}
@@ -52,10 +62,30 @@
   .btn-primary:hover{background:#274b79;transform:translateY(-2px);box-shadow:0 12px 30px -10px rgba(31,58,95,.45)}
   .btn-ghost{border:1px solid var(--line-2);color:var(--text)}
   .btn-ghost:hover{border-color:var(--text-dim);background:var(--panel)}
-  .hero-meta{position:absolute;bottom:38px;left:0;right:0;display:flex;gap:48px;flex-wrap:wrap;opacity:0;animation:rise 1s 1s forwards;z-index:2}
-  .meta-item .n{font-family:var(--display);font-size:2.1rem;font-weight:500;color:var(--text);line-height:1}
-  .meta-item .l{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--text-faint);text-transform:uppercase;margin-top:7px}
-  @media(max-width:820px){.hero-meta{position:static;margin-top:50px;gap:32px}}
+  .hero-card{position:relative;background:linear-gradient(160deg,#fffdf8,#f2eee5);border:1px solid var(--line-2);border-radius:8px;padding:28px;box-shadow:0 34px 80px -52px rgba(26,36,51,.58);opacity:0;animation:rise .9s .92s forwards}
+  .hero-card::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:linear-gradient(90deg,var(--accent),var(--accent-2),var(--signal));border-radius:8px 8px 0 0}
+  .profile-top{display:flex;align-items:center;gap:18px;margin-bottom:24px}
+  .avatar{width:76px;height:76px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:#fff;font-family:var(--display);font-size:2rem;border:5px solid #fff;box-shadow:0 12px 28px -18px rgba(26,36,51,.7)}
+  .profile-name{font-family:var(--display);font-size:1.65rem;line-height:1.05;font-weight:500}
+  .profile-role{font-size:.88rem;color:var(--text-dim);margin-top:7px;line-height:1.45}
+  .profile-line{border-top:1px solid var(--line);padding-top:18px;margin-top:18px}
+  .profile-line .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-2);margin-bottom:7px}
+  .profile-line p{font-size:.92rem;color:var(--text-dim);line-height:1.55}
+  .proof-list{display:grid;grid-template-columns:1fr;gap:10px;margin-top:20px}
+  .proof-item{display:flex;align-items:flex-start;gap:12px;padding:13px 14px;background:rgba(31,58,95,.045);border:1px solid rgba(31,58,95,.10);border-radius:6px}
+  .proof-mark{font-family:var(--mono);font-size:11px;color:var(--signal);padding-top:2px}
+  .proof-item strong{display:block;font-size:.93rem;color:var(--text);line-height:1.25}
+  .proof-item span{display:block;font-size:.82rem;color:var(--text-dim);line-height:1.45;margin-top:3px}
+  .hero-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:52px;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--line);opacity:0;animation:rise 1s 1s forwards;z-index:2}
+  .meta-item{background:rgba(255,253,248,.86);padding:22px 20px}
+  .meta-item .n{font-family:var(--display);font-size:1.78rem;font-weight:500;color:var(--text);line-height:1}
+  .meta-item .l{font-family:var(--mono);font-size:10.5px;letter-spacing:.10em;color:var(--text-faint);text-transform:uppercase;margin-top:9px;line-height:1.45}
+  .signature-strip{position:relative;z-index:2;margin-top:34px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .signature{border-left:3px solid var(--accent-2);padding:14px 18px;background:rgba(255,255,255,.44)}
+  .signature b{display:block;font-size:.94rem;margin-bottom:5px}
+  .signature span{display:block;font-size:.84rem;color:var(--text-dim);line-height:1.45}
+  @media(max-width:820px){.hero-meta{grid-template-columns:repeat(2,1fr);margin-top:38px}.signature-strip{grid-template-columns:1fr}.hero-card{padding:24px}}
+  @media(max-width:520px){.hero-meta{grid-template-columns:1fr}}
 
   section{position:relative;z-index:2;padding:100px 0;border-top:1px solid var(--line)}
   .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:14px}
@@ -203,6 +233,7 @@
   .foot-bottom{margin-top:70px;padding-top:28px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:var(--text-faint)}
 
   @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+  .hero-tag,h1 span,.hero-sub,.hero-actions,.hero-card,.hero-meta{opacity:1;animation:none}
   /* Entrance animation only applies when JS is active, so content is never hidden without it */
   .js .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}
   .reveal.in{opacity:1;transform:translateY(0)}
@@ -234,25 +265,52 @@
 
 <header>
   <div class="wrap">
-    <div class="hero-tag">AI Strategy, Delivery and Governance · Multi-Regulated, Safety-Critical Industries</div>
-    <h1>
-      <span>I can build it,</span>
-      <span>prove it works,</span>
-      <span>and get it <span class="em">past</span></span>
-      <span>the friction.</span>
-    </h1>
-    <p class="hero-sub">
-      Fifteen plus years leading delivery across <strong>multi-regulated, safety-critical industries</strong>. I recognise where AI can help, explain it plainly, build the prototype myself, find the <strong>safest way to do it</strong>, put the controls on and earn the approvals. Then I drive adoption and harden it until it runs in the most secure, heavily audited environments. Much of that time has been spent beside executives, turning fragmented data into decisions they can trust. I am not a strategist who can't build, and not a builder who can't get it signed off.
-    </p>
-    <div class="hero-actions">
-      <a href="#work" class="btn btn-primary">See it in practice →</a>
-      <a href="#friction" class="btn btn-ghost">Why this is the hard part</a>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="hero-tag">AI Strategy, Delivery and Governance · Regulated Transformation</div>
+        <h1>
+          <span>Sid Pandey</span>
+          <span>turns complex</span>
+          <span>AI into <span class="em">trusted</span></span>
+          <span>delivery.</span>
+        </h1>
+        <p class="hero-sub">
+          Senior AI, data and transformation leader with 15+ years across transport, infrastructure, utilities, healthcare, defence and other safety-critical environments. I help organisations move from AI ambition to governed implementation: building the prototype, proving the value, navigating risk and approval, then hardening the capability until executives and frontline teams can use it with confidence.
+        </p>
+        <div class="hero-actions">
+          <a href="#work" class="btn btn-primary">View selected work →</a>
+          <a href="#contact" class="btn btn-ghost">Start a conversation</a>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="Sid Pandey profile summary">
+        <div class="profile-top">
+          <div class="avatar">SP</div>
+          <div>
+            <div class="profile-name">Sid Pandey</div>
+            <div class="profile-role">AI adoption, governance and delivery for complex organisations</div>
+          </div>
+        </div>
+        <div class="profile-line">
+          <div class="k">Known for</div>
+          <p>Bridging executives, risk owners and technical teams so high-stakes AI and data programs get approved, adopted and made operational.</p>
+        </div>
+        <div class="proof-list">
+          <div class="proof-item"><span class="proof-mark">01</span><div><strong>Builds, not just advises</strong><span>Prototype, demonstrate and translate the result into business value.</span></div></div>
+          <div class="proof-item"><span class="proof-mark">02</span><div><strong>Governance that survives audit</strong><span>Controls, evidence, assurance and approval paths built in early.</span></div></div>
+          <div class="proof-item"><span class="proof-mark">03</span><div><strong>Enterprise data foundation</strong><span>Turns fragmented multi-vendor data into decision-ready systems.</span></div></div>
+        </div>
+      </aside>
     </div>
-    <div class="hero-meta wrap" style="padding:0">
-      <div class="meta-item"><div class="n">15+</div><div class="l">Years · Regulated and Safety-Critical</div></div>
-      <div class="meta-item"><div class="n">Multi-Million</div><div class="l">Value Delivered</div></div>
-      <div class="meta-item"><div class="n">1×</div><div class="l">Founder · SaaS Exit</div></div>
-      <div class="meta-item"><div class="n">Multi-Sector</div><div class="l">Regulated, Safety-Critical Experience</div></div>
+    <div class="hero-meta">
+      <div class="meta-item"><div class="n">15+</div><div class="l">Years leading regulated and safety-critical delivery</div></div>
+      <div class="meta-item"><div class="n">$4M+</div><div class="l">Maintenance savings from predictive asset intelligence</div></div>
+      <div class="meta-item"><div class="n">70%</div><div class="l">Enterprise adoption across data literacy programs</div></div>
+      <div class="meta-item"><div class="n">1×</div><div class="l">Founder with SaaS exit and operator mindset</div></div>
+    </div>
+    <div class="signature-strip">
+      <div class="signature"><b>AI that gets permission</b><span>Use cases shaped around risk, safety, privacy, probity and practical adoption.</span></div>
+      <div class="signature"><b>Data people can trust</b><span>Unified reporting foundations across complex vendors, systems and operating models.</span></div>
+      <div class="signature"><b>Executive-ready delivery</b><span>Plain-language decisions, visible controls and outcomes that survive scrutiny.</span></div>
     </div>
   </div>
 </header>
