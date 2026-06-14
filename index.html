@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sid Pandey · AI Strategy, Delivery and Governance · Multi-Regulated, Safety-Critical Industries</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Light editorial theme — warm paper, deep navy structure, restrained gold accent */
+  :root{
+    --ink:#f6f4ef;--ink-2:#fffdf8;--panel:#ffffff;--panel-2:#faf8f3;
+    --line:#e3ddd1;--line-2:#cdc4b3;--text:#1a2433;--text-dim:#54607a;--text-faint:#8b8576;
+    --accent:#1f3a5f;--accent-2:#a9772e;--signal:#2f7d74;--gold:#a9772e;
+    --maxw:1180px;--display:'Fraunces',serif;--sans:'Archivo',sans-serif;--mono:'JetBrains Mono',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--ink);color:var(--text);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  ::selection{background:var(--accent);color:#fff}
+  a{color:inherit;text-decoration:none}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.04;background-image:linear-gradient(var(--text-faint) 1px,transparent 1px),linear-gradient(90deg,var(--text-faint) 1px,transparent 1px);background-size:54px 54px}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 32px;background:rgba(246,244,239,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav-mark{font-family:var(--mono);font-size:13px;letter-spacing:.18em;font-weight:600;color:var(--text);text-transform:uppercase;display:flex;align-items:center;gap:10px}
+  .nav-mark .dot{width:8px;height:8px;background:var(--accent);border-radius:50%}
+  .nav-links{display:flex;gap:30px;font-size:13px;letter-spacing:.04em}
+  .nav-links a{color:var(--text-dim);transition:color .2s;font-weight:500}
+  .nav-links a:hover{color:var(--text)}
+  .nav-cta{font-family:var(--mono);font-size:12px;letter-spacing:.08em;border:1px solid var(--line-2);padding:8px 16px;border-radius:2px;color:var(--text);transition:all .2s}
+  .nav-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+  @media(max-width:820px){.nav-links{display:none}}
+
+  header{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 0 80px;overflow:hidden}
+  header::after{content:"";position:absolute;top:-20%;right:-10%;width:60%;height:120%;background:radial-gradient(ellipse at center,rgba(31,58,95,.07),transparent 62%);pointer-events:none;z-index:0}
+  .hero-tag{font-family:var(--mono);font-size:12.5px;letter-spacing:.22em;color:var(--accent-2);text-transform:uppercase;margin-bottom:30px;display:flex;align-items:center;gap:14px;opacity:0;animation:rise .8s .1s forwards}
+  .hero-tag::before{content:"";width:40px;height:1px;background:var(--accent-2)}
+  h1{font-family:var(--display);font-weight:500;font-size:clamp(2.5rem,6.4vw,5.2rem);line-height:1.04;letter-spacing:-.02em;margin-bottom:34px;max-width:16ch}
+  h1 .em{font-style:italic;color:var(--accent-2)}
+  h1 span{display:block;opacity:0;animation:rise .9s forwards}
+  h1 span:nth-child(1){animation-delay:.2s}
+  h1 span:nth-child(2){animation-delay:.32s}
+  h1 span:nth-child(3){animation-delay:.44s}
+  h1 span:nth-child(4){animation-delay:.56s}
+  .hero-sub{font-size:clamp(1.05rem,1.7vw,1.3rem);color:var(--text-dim);max-width:62ch;line-height:1.62;margin-bottom:46px;font-weight:400;opacity:0;animation:rise .9s .68s forwards}
+  .hero-sub strong{color:var(--text);font-weight:600}
+  .hero-actions{display:flex;gap:18px;flex-wrap:wrap;opacity:0;animation:rise .9s .82s forwards}
+  .btn{font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.02em;padding:15px 28px;border-radius:3px;transition:all .22s;cursor:pointer;display:inline-flex;align-items:center;gap:10px}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:#274b79;transform:translateY(-2px);box-shadow:0 12px 30px -10px rgba(31,58,95,.45)}
+  .btn-ghost{border:1px solid var(--line-2);color:var(--text)}
+  .btn-ghost:hover{border-color:var(--text-dim);background:var(--panel)}
+  .hero-meta{position:absolute;bottom:38px;left:0;right:0;display:flex;gap:48px;flex-wrap:wrap;opacity:0;animation:rise 1s 1s forwards;z-index:2}
+  .meta-item .n{font-family:var(--display);font-size:2.1rem;font-weight:500;color:var(--text);line-height:1}
+  .meta-item .l{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--text-faint);text-transform:uppercase;margin-top:7px}
+  @media(max-width:820px){.hero-meta{position:static;margin-top:50px;gap:32px}}
+
+  section{position:relative;z-index:2;padding:100px 0;border-top:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:14px}
+  .sec-num{font-family:var(--mono);font-size:13px;color:var(--accent-2);letter-spacing:.1em}
+  .sec-kicker{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint)}
+  .sec-title{font-family:var(--display);font-size:clamp(1.9rem,3.6vw,2.9rem);font-weight:500;letter-spacing:-.015em;margin-bottom:24px;line-height:1.1}
+  .sec-intro{font-size:1.08rem;color:var(--text-dim);max-width:72ch;line-height:1.65;margin-bottom:60px}
+
+  /* THESIS */
+  .thesis-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:start}
+  @media(max-width:880px){.thesis-grid{grid-template-columns:1fr;gap:40px}}
+  .thesis-statement{font-family:var(--display);font-size:clamp(1.4rem,2.6vw,1.95rem);font-weight:400;line-height:1.42;letter-spacing:-.01em}
+  .thesis-statement .hl{color:var(--accent-2);font-style:italic}
+  .pillars{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--panel)}
+  .pillar{padding:24px 26px;border-bottom:1px solid var(--line);transition:background .2s}
+  .pillar:last-child{border-bottom:none}
+  .pillar:hover{background:var(--panel-2)}
+  .pillar h4{font-family:var(--sans);font-size:1.02rem;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:11px}
+  .pillar h4 .ix{font-family:var(--mono);font-size:12px;color:var(--accent-2);font-weight:500}
+  .pillar p{font-size:.94rem;color:var(--text-dim);line-height:1.55}
+
+  /* THE ARC */
+  .arc{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:10px}
+  @media(max-width:880px){.arc{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.arc{grid-template-columns:1fr}}
+  .arc-step{position:relative;border:1px solid var(--line);border-radius:7px;padding:24px 20px;background:var(--panel);overflow:hidden;transition:all .25s}
+  .arc-step:hover{transform:translateY(-3px);border-color:var(--line-2);box-shadow:0 14px 30px -20px rgba(26,36,51,.3)}
+  .arc-step::before{content:"";position:absolute;top:0;left:0;width:100%;height:3px}
+  .arc-step.easy::before{background:var(--signal)}
+  .arc-step.mid::before{background:var(--accent-2)}
+  .arc-step.hard::before{background:var(--accent)}
+  .arc-step .an{font-family:var(--display);font-size:1.7rem;font-style:italic;color:var(--line-2);line-height:1;display:block;margin-bottom:14px}
+  .arc-step .al{font-family:var(--sans);font-size:1.04rem;font-weight:700;letter-spacing:-.01em;margin-bottom:9px;line-height:1.2}
+  .arc-step.easy .al{color:var(--text)}
+  .arc-step.hard .al{color:var(--text)}
+  .arc-step p{font-size:.86rem;color:var(--text-dim);line-height:1.5}
+
+  /* PROJECTS */
+  .tier-label{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-faint);margin:0 0 12px;display:flex;align-items:center;gap:16px}
+  .tier-label::after{content:"";flex:1;height:1px;background:var(--line)}
+  .tier-note{font-size:.95rem;color:var(--text-faint);margin-bottom:26px;max-width:60ch;font-style:italic;font-family:var(--display)}
+
+  .flagship{position:relative;border:1px solid var(--line-2);border-radius:8px;overflow:hidden;background:linear-gradient(155deg,var(--panel),var(--panel-2));margin-bottom:60px;box-shadow:0 24px 60px -40px rgba(26,36,51,.4)}
+  .flagship::before{content:"";position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-2),var(--signal))}
+  .flagship-inner{padding:46px 44px}
+  @media(max-width:680px){.flagship-inner{padding:32px 24px}}
+  .flag-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;margin-bottom:22px}
+  .flag-badges{display:flex;gap:8px;flex-wrap:wrap}
+  .badge{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:2px;background:rgba(47,125,116,.10);color:var(--signal);border:1px solid rgba(47,125,116,.28)}
+  .badge.accent{background:rgba(31,58,95,.08);color:var(--accent);border-color:rgba(31,58,95,.3)}
+  .flag-org{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--text-faint);text-transform:uppercase}
+  .flag-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-2);margin-bottom:14px}
+  .flagship h3{font-family:var(--display);font-size:clamp(1.55rem,3vw,2.25rem);font-weight:500;line-height:1.14;letter-spacing:-.015em;margin-bottom:20px;max-width:24ch}
+  .flagship h3 .em{font-style:italic;color:var(--accent-2)}
+  .flag-body{display:grid;grid-template-columns:1.4fr 1fr;gap:44px;margin-top:8px}
+  @media(max-width:780px){.flag-body{grid-template-columns:1fr;gap:28px}}
+  .cpr{margin-bottom:18px}
+  .cpr .k{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-2);margin-bottom:6px}
+  .cpr .v{font-size:.98rem;color:var(--text-dim);line-height:1.6}
+  .cpr .v strong{color:var(--text);font-weight:600}
+  .flag-controls{background:rgba(31,58,95,.04);border:1px solid var(--line);border-radius:6px;padding:24px}
+  .flag-controls .ck{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--signal);margin-bottom:8px;display:flex;align-items:center;gap:9px}
+  .flag-controls .csub{font-size:.82rem;color:var(--text-faint);margin-bottom:16px;line-height:1.45}
+  .flag-controls ul{list-style:none}
+  .flag-controls li{font-size:.9rem;color:var(--text-dim);padding:8px 0 8px 22px;position:relative;border-bottom:1px solid rgba(227,221,209,.8);line-height:1.45}
+  .flag-controls li:last-child{border-bottom:none}
+  .flag-controls li::before{content:"→";position:absolute;left:0;color:var(--accent);font-family:var(--mono)}
+  .flag-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px;padding-top:30px;border-top:1px solid var(--line)}
+  @media(max-width:780px){.flag-stats{grid-template-columns:repeat(2,1fr)}}
+  .fs .n{font-family:var(--display);font-size:1.85rem;font-weight:500;color:var(--accent);line-height:1}
+  .fs .l{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);margin-top:9px;line-height:1.5}
+
+  .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  @media(max-width:780px){.proj-grid{grid-template-columns:1fr}}
+  .card{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:7px;padding:30px 28px;transition:all .25s;display:flex;flex-direction:column;overflow:hidden}
+  .card::after{content:"";position:absolute;left:0;top:0;width:3px;height:100%;background:var(--accent);transform:scaleY(0);transform-origin:top;transition:transform .3s}
+  .card:hover{border-color:var(--line-2);background:var(--panel-2);transform:translateY(-3px);box-shadow:0 18px 40px -28px rgba(26,36,51,.35)}
+  .card:hover::after{transform:scaleY(1)}
+  .card-org{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint);margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .card-org .theme{color:var(--signal);text-align:right}
+  .card h4{font-family:var(--display);font-size:1.32rem;font-weight:500;line-height:1.2;margin-bottom:14px;letter-spacing:-.01em}
+  .card p{font-size:.93rem;color:var(--text-dim);line-height:1.58;flex:1;margin-bottom:18px}
+  .card-foot{display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid var(--line)}
+  .card-metric{font-family:var(--mono);font-size:12px;color:var(--accent-2);letter-spacing:.04em}
+  .card-link{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--text-faint);transition:color .2s;display:inline-flex;align-items:center;gap:6px}
+  .card:hover .card-link{color:var(--text)}
+  .card-link .arrow{transition:transform .2s}
+  .card:hover .card-link .arrow{transform:translate(3px,-3px)}
+
+  /* COMPACT ROWS */
+  .row-list{display:flex;flex-direction:column;margin-top:14px;border:1px solid var(--line);border-radius:7px;overflow:hidden;background:var(--panel)}
+  .row{display:grid;grid-template-columns:minmax(220px,1.1fr) 2fr auto;gap:20px;align-items:center;padding:18px 24px;border-bottom:1px solid var(--line);transition:background .2s}
+  .row:last-child{border-bottom:none}
+  .row:hover{background:var(--panel-2)}
+  .row-main{display:flex;flex-direction:column;gap:4px}
+  .row-org{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-faint)}
+  .row-title{font-family:var(--sans);font-size:1rem;font-weight:600;color:var(--text);line-height:1.25}
+  .row-desc{font-size:.88rem;color:var(--text-dim);line-height:1.5}
+  .row-arrow{font-family:var(--mono);color:var(--text-faint);transition:transform .2s,color .2s}
+  .row:hover .row-arrow{color:var(--accent);transform:translate(3px,-3px)}
+  @media(max-width:780px){.row{grid-template-columns:1fr;gap:8px}.row-arrow{display:none}}
+
+  .cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:7px;overflow:hidden}
+  @media(max-width:780px){.cap-grid{grid-template-columns:1fr}}
+  .cap{background:var(--panel);padding:30px 28px;transition:background .25s}
+  .cap:hover{background:var(--panel-2)}
+  .cap .ci{font-family:var(--mono);font-size:12px;color:var(--accent-2);letter-spacing:.1em;margin-bottom:14px}
+  .cap h4{font-family:var(--sans);font-size:1.08rem;font-weight:700;margin-bottom:12px;letter-spacing:-.01em}
+  .cap p{font-size:.88rem;color:var(--text-dim);line-height:1.55}
+
+  /* INDUSTRIES */
+  .ind-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:7px;overflow:hidden}
+  @media(max-width:880px){.ind-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.ind-grid{grid-template-columns:1fr}}
+  .ind{background:var(--panel);padding:26px 24px;transition:background .25s}
+  .ind:hover{background:var(--panel-2)}
+  .ind-n{font-family:var(--mono);font-size:12px;color:var(--accent-2);letter-spacing:.1em;margin-bottom:14px}
+  .ind h4{font-family:var(--display);font-size:1.18rem;font-weight:500;line-height:1.18;margin-bottom:10px;letter-spacing:-.01em}
+  .ind p{font-size:.85rem;color:var(--text-dim);line-height:1.5}
+
+  /* STANDARDS */
+  .standards{margin-top:36px;padding:34px 32px;border:1px solid var(--line);border-radius:7px;background:var(--panel)}
+  @media(max-width:680px){.standards{padding:26px 22px}}
+  .std-head{margin-bottom:26px;max-width:74ch}
+  .std-label{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-2);margin-bottom:12px}
+  .std-intro{font-size:.96rem;color:var(--text-dim);line-height:1.6}
+  .std-domains{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  @media(max-width:680px){.std-domains{grid-template-columns:1fr}}
+  .std-domain{}
+  .sd-k{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--signal);margin-bottom:12px}
+  .std-items{display:flex;flex-wrap:wrap;gap:9px}
+  .std-chip{font-family:var(--mono);font-size:11.5px;letter-spacing:.02em;padding:8px 13px;border-radius:3px;border:1px solid var(--line-2);color:var(--text-dim)}
+  .std-chip.cert{border-color:var(--accent-2);color:var(--text);background:rgba(169,119,46,.10)}
+
+  footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:90px 0 50px;overflow:hidden}
+  footer::after{content:"";position:absolute;bottom:-30%;left:-5%;width:50%;height:120%;background:radial-gradient(ellipse at center,rgba(169,119,46,.06),transparent 60%);pointer-events:none}
+  .foot-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:60px;align-items:end;position:relative;z-index:2}
+  @media(max-width:780px){.foot-grid{grid-template-columns:1fr;gap:40px}}
+  .foot-head{font-family:var(--display);font-size:clamp(2rem,4.5vw,3.4rem);font-weight:500;line-height:1.1;letter-spacing:-.02em;margin-bottom:26px}
+  .foot-head .em{font-style:italic;color:var(--accent-2)}
+  .foot-links{display:flex;flex-direction:column;gap:2px}
+  .foot-link{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--line);font-size:1rem;transition:all .2s;color:var(--text-dim)}
+  .foot-link:hover{color:var(--text);padding-left:8px}
+  .foot-link .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint)}
+  .foot-bottom{margin-top:70px;padding-top:28px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:var(--text-faint)}
+
+  @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+  /* Entrance animation only applies when JS is active, so content is never hidden without it */
+  .js .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}
+  .reveal.in{opacity:1;transform:translateY(0)}
+  /* Fail-safe: never leave content hidden for print, screenshot or reduced-motion flows */
+  @media print{
+    .reveal,.reveal.in,.hero-tag,h1 span,.hero-sub,.hero-actions,.hero-meta{opacity:1!important;transform:none!important;animation:none!important}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .reveal,.hero-tag,h1 span,.hero-sub,.hero-actions,.hero-meta{opacity:1!important;transform:none!important;animation:none!important}
+  }
+</style>
+<script>document.documentElement.className+=' js';</script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-mark"><span class="dot"></span>SID PANDEY</div>
+  <div class="nav-links">
+    <a href="#thesis">Positioning</a>
+    <a href="#friction">How I Work</a>
+    <a href="#work">Selected Work</a>
+    <a href="#industries">Industries</a>
+    <a href="#capabilities">Capabilities</a>
+    <a href="#governance">Governance</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="nav-cta">Get in touch →</a>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="hero-tag">AI Strategy, Delivery and Governance · Multi-Regulated, Safety-Critical Industries</div>
+    <h1>
+      <span>I can build it,</span>
+      <span>prove it works,</span>
+      <span>and get it <span class="em">past</span></span>
+      <span>the friction.</span>
+    </h1>
+    <p class="hero-sub">
+      Fifteen plus years leading delivery across <strong>multi-regulated, safety-critical industries</strong>. I recognise where AI can help, explain it plainly, build the prototype myself, find the <strong>safest way to do it</strong>, put the controls on and earn the approvals. Then I drive adoption and harden it until it runs in the most secure, heavily audited environments. Much of that time has been spent beside executives, turning fragmented data into decisions they can trust. I am not a strategist who can't build, and not a builder who can't get it signed off.
+    </p>
+    <div class="hero-actions">
+      <a href="#work" class="btn btn-primary">See it in practice →</a>
+      <a href="#friction" class="btn btn-ghost">Why this is the hard part</a>
+    </div>
+    <div class="hero-meta wrap" style="padding:0">
+      <div class="meta-item"><div class="n">15+</div><div class="l">Years · Regulated and Safety-Critical</div></div>
+      <div class="meta-item"><div class="n">Multi-Million</div><div class="l">Value Delivered</div></div>
+      <div class="meta-item"><div class="n">1×</div><div class="l">Founder · SaaS Exit</div></div>
+      <div class="meta-item"><div class="n">Multi-Sector</div><div class="l">Regulated, Safety-Critical Experience</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- THESIS -->
+<section id="thesis">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><span class="sec-kicker">Positioning</span></div>
+    <h2 class="sec-title reveal">I cover the whole arc, build included.</h2>
+    <div class="thesis-grid">
+      <div class="thesis-statement reveal">
+        Most people own one slice: the strategist who can't build, the builder who can't get it approved, the domain expert who doesn't know AI. <span class="hl">I run the full chain</span>, from recognise and educate, through build, control and approve, to adopt, scale and harden.
+        <p style="font-family:var(--sans);font-size:1rem;font-weight:400;line-height:1.62;color:var(--text-dim);margin-top:28px">
+          I can prototype an idea and run the live demo myself. Where I am rare is what comes after the demo: finding the <em>safest</em> way to do the work, putting the controls on it, getting it past the sceptics and the probity gates, and making people actually adopt it. I have spent years reporting to executives and sitting comfortably between the most senior person in the room and the most technical, translating both ways, then engineering the result to survive a highly secure, heavily audited, executive-facing environment while staying simple enough for anyone to use.
+        </p>
+      </div>
+      <div class="pillars reveal">
+        <div class="pillar"><h4><span class="ix">A</span> I build and demonstrate</h4><p>Prototype it, run the live demo. I show it working, I don't just describe it.</p></div>
+        <div class="pillar"><h4><span class="ix">B</span> I find the safest path</h4><p>Identify the right workflow and the lowest risk way to do it. Safety first by instinct.</p></div>
+        <div class="pillar"><h4><span class="ix">C</span> I remove the friction</h4><p>Educate, win over risk owners and probity, and get it approved. The part that kills most projects.</p></div>
+        <div class="pillar"><h4><span class="ix">D</span> I make it stick and harden</h4><p>Drive adoption and productivity, then harden it to run in the most secure, heavily audited settings.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE HARD PART -->
+<section id="friction">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><span class="sec-kicker">How I Work</span></div>
+    <h2 class="sec-title reveal">Recognise → build → control → harden.</h2>
+    <p class="sec-intro reveal">The full chain, end to end. Plenty of people own a step or two. The value is in carrying it the whole way, especially the back half, where AI initiatives usually die.</p>
+    <div class="arc">
+      <div class="arc-step easy reveal"><span class="an">01</span><div class="al">Recognise</div><p>Spot a workflow that could be done better. The easy, visible part.</p></div>
+      <div class="arc-step easy reveal"><span class="an">02</span><div class="al">Educate</div><p>Explain to people, in plain terms, what AI can and can't do for them.</p></div>
+      <div class="arc-step mid reveal"><span class="an">03</span><div class="al">Find the safest way</div><p>Identify the right use case and the lowest risk path to deliver it.</p></div>
+      <div class="arc-step mid reveal"><span class="an">04</span><div class="al">Build and demonstrate</div><p>Prototype it myself, run the live demo, show it actually working.</p></div>
+      <div class="arc-step hard reveal"><span class="an">05</span><div class="al">Put controls on</div><p>Oversight, traceability and guardrails. The harness that makes it safe.</p></div>
+      <div class="arc-step hard reveal"><span class="an">06</span><div class="al">Get it approved</div><p>Past the sceptics, risk owners and probity. Where most initiatives stall.</p></div>
+      <div class="arc-step hard reveal"><span class="an">07</span><div class="al">Adopt and scale</div><p>Make people use it, get real productivity, build it into a robust model.</p></div>
+      <div class="arc-step hard reveal"><span class="an">08</span><div class="al">Harden for secure environments</div><p>Heavily audited, documented and executive-facing, yet simple enough for anyone.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SELECTED WORK -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><span class="sec-kicker">Selected Work</span></div>
+    <h2 class="sec-title reveal">Proof, across multi-regulated environments.</h2>
+    <p class="sec-intro reveal">One case where I took AI the whole way, then fifteen years of delivery organised by the themes that recur through all of it.</p>
+
+    <div class="tier-label reveal">Proof Case</div>
+    <p class="tier-note reveal">One exhibit of the practice, chosen because it shows the whole arc, not because it's the only AI work I've done.</p>
+    <div class="flagship reveal">
+      <div class="flagship-inner">
+        <div class="flag-top">
+          <div class="flag-badges">
+            <span class="badge accent">Hands-on build and demo</span>
+            <span class="badge">Approved and adopted</span>
+            <span class="badge">Hardened for secure environments</span>
+            <span class="badge">Exec-facing, audit-ready</span>
+          </div>
+          <div class="flag-org">Victorian State Government · Among the first of its kind</div>
+        </div>
+        <div class="flag-eyebrow">An early, pioneering initiative inside one of the State's largest, most tightly governed contracts.</div>
+        <h3>Changed the mindset of people who <span class="em">blocked AI as insecure</span>, then integrated something genuinely useful into a highly secure environment</h3>
+        <div class="flag-body">
+          <div>
+            <div class="cpr"><div class="k">The environment</div><div class="v">One of the largest Victorian State Government contracts. <strong>Multi-regulated, heavily audited and security-bound</strong>, the kind of highly secure environment a bank would recognise, with no appetite for risk.</div></div>
+            <div class="cpr"><div class="k">The real barrier</div><div class="v">Not the technology. People <strong>blocked AI outright, assuming it was insecure</strong>. The work was changing that mentality, proving AI could be safe, controlled and genuinely helpful here.</div></div>
+            <div class="cpr"><div class="k">What I did</div><div class="v">Recognised the opportunity, educated stakeholders, built a working prototype to <strong>demonstrate it rather than pitch it</strong>, put the controls on, and earned the approvals to integrate it into the organisation.</div></div>
+            <div class="cpr"><div class="k">Where it landed</div><div class="v">A robust, adopted capability running in a <strong>heavily audited, fully governed setting</strong>. Evidenced, signed off, and simple enough for senior executives to use unaided, running at a small fraction of the cost of the manual effort it absorbed.</div></div>
+          </div>
+          <div class="flag-controls">
+            <div class="ck">◆ The harness that made it safe</div>
+            <div class="csub">The controls were the unlock, the reason a risk-averse, heavily audited organisation allowed it in at all.</div>
+            <ul>
+              <li>Human review and sign-off at every decision gate</li>
+              <li>Source traceability grounded in a controlled data environment</li>
+              <li>Validation checkpoints and output verification</li>
+              <li>Grounded retrieval that cites its sources, or abstains honestly</li>
+              <li>Audit-ready evidence, decision logs and documentation</li>
+              <li>Confidentiality boundaries and escalation pathways</li>
+            </ul>
+          </div>
+        </div>
+        <div class="flag-stats">
+          <div class="fs"><div class="n">100%</div><div class="l">Of specialists with access adopted it as their default first step</div></div>
+          <div class="fs"><div class="n">7</div><div class="l">Specialist domains, one governed workflow</div></div>
+          <div class="fs"><div class="n">0</div><div class="l">Unsupported answers published, every claim cited or abstained</div></div>
+          <div class="fs"><div class="n">~$14M</div><div class="l">AI capability investment case it helped strengthen</div></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="sec-intro reveal" style="margin-top:54px;margin-bottom:34px">Beyond the AI work, one thread runs through fifteen years of delivery: taking <strong style="color:var(--text);font-weight:600">fragmented data from many vendors and systems and integrating it into a single unified base</strong> that people can report and decide from on one platform. That is not a side skill. It is the precondition for trustworthy AI. You can't safely automate decisions on data you can't see end to end, and I am comfortable turning messy, unorganised data into something decision-ready.</p>
+
+    <!-- THEME 1: INTEGRATION -->
+    <div class="tier-label reveal">Data Integration and Single Platform Decision Making</div>
+    <p class="tier-note reveal">The spine of my work. Designing the architecture that pulls fragmented, multi-vendor data into one unified base people can actually decide from.</p>
+    <div class="proj-grid">
+      <a class="card reveal" href="https://bigbuild.vic.gov.au/projects/metro-tunnel" target="_blank" rel="noopener">
+        <div class="card-org"><span>DTP · Metro Tunnel</span><span class="theme">Data Architecture Lead</span></div>
+        <h4>Metro Tunnel, Network Data Integration</h4>
+        <p>Designed the data architecture that brought Metro Tunnel information into the wider network, so data from multiple vendors flowed into one unified view. That meant better decisions across the new and existing network, instead of two disconnected databases reporting in isolation.</p>
+        <div class="card-foot"><span class="card-metric">Data architecture lead</span><span class="card-link">bigbuild.vic.gov.au <span class="arrow">↗</span></span></div>
+      </a>
+      <a class="card reveal" href="https://www.premier.vic.gov.au/sites/default/files/2023-10/231005-Real-Time-Info-For-Regional-Train-Passengers.pdf" target="_blank" rel="noopener">
+        <div class="card-org"><span>V/Line</span><span class="theme">Data Integration</span></div>
+        <h4>Real-Time Regional Passenger Information</h4>
+        <p>Integrated separate operational data sources into one reliable, public-facing layer that delivered real-time updates to regional passengers. Fragmented feeds became a single source people could trust. One of the standouts.</p>
+        <div class="card-foot"><span class="card-metric">Regional network</span><span class="card-link">premier.vic.gov.au <span class="arrow">↗</span></span></div>
+      </a>
+    </div>
+    <div class="row-list">
+      <a class="row reveal" href="https://transport.vic.gov.au/help-and-support/other-public-transport-help/public-transport-data-program" target="_blank" rel="noopener">
+        <div class="row-main"><span class="row-org">DTP</span><span class="row-title">Public Transport Data Program (PTDP)</span></div>
+        <span class="row-desc">Data architecture and governance underpinning statewide public transport reporting. The master data foundation that downstream AI depends on, backed by data literacy programs that reached 70% enterprise adoption.</span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="row reveal" href="https://www.transurban.com/news/the-west-gate-tunnel-is-now-open" target="_blank" rel="noopener">
+        <div class="row-main"><span class="row-org">Transurban</span><span class="row-title">West Gate Tunnel, CityLink Data Integration</span></div>
+        <span class="row-desc">Integrated the West Gate Tunnel data architecture into CityLink so two major assets, serving 800K+ vehicles a day, ran on one platform. Unified information made network-wide decision-making far easier, instead of two separate databases.</span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="row reveal" href="https://www.transurban.com/content/dam/transurban-pdfs/03/qld-roadsideupgrade-factsheet.pdf" target="_blank" rel="noopener">
+        <div class="row-main"><span class="row-org">Transurban</span><span class="row-title">CityLink, Integrated Rescue Channel</span></div>
+        <span class="row-desc">Integrated the data so information flows through one platform for unified decision-making, instead of running as separate databases.</span>
+        <span class="row-arrow">↗</span>
+      </a>
+      <a class="row reveal" href="https://transport.vic.gov.au/news-and-resources/projects/myki-upgrade" target="_blank" rel="noopener">
+        <div class="row-main"><span class="row-org">DTP</span><span class="row-title">Contactless Payments / myki Upgrade</span></div>
+        <span class="row-desc">Modernising the fare payment platform and integrating contactless data into the broader transit information ecosystem.</span>
+        <span class="row-arrow">↗</span>
+      </a>
+    </div>
+
+    <!-- THEME 2: AI & INTELLIGENT OPS -->
+    <div class="tier-label reveal" style="margin-top:54px">AI and Intelligent Operations</div>
+    <p class="tier-note reveal">Applied AI and automation where failure has real consequences. Safety-critical environments, not sandboxes.</p>
+    <div class="proj-grid">
+      <a class="card reveal" href="https://www.transurban.com/news/pacemaker-lighting-is-making-burnley-tunnel-a-better-drive" target="_blank" rel="noopener">
+        <div class="card-org"><span>Transurban</span><span class="theme">AI / Flow Optimisation</span></div>
+        <h4>AI Pacemaker Lighting, Burnley Tunnel</h4>
+        <p>Part of an AI-driven traffic flow programme using dynamic lighting to smooth driver behaviour and lift throughput in a safety-critical tunnel. AI applied where the cost of getting it wrong is real.</p>
+        <div class="card-foot"><span class="card-metric">+17% peak speeds · 70% less stop-start</span><span class="card-link">transurban.com <span class="arrow">↗</span></span></div>
+      </a>
+      <a class="card reveal" href="https://cavs.transurban.com/trials/victoria/highly-automated-driving" target="_blank" rel="noopener">
+        <div class="card-org"><span>Transurban</span><span class="theme">Autonomy / Systems</span></div>
+        <h4>Highly Automated Driving Trial</h4>
+        <p>Integrated highly automated driving trials onto live toll road infrastructure, coordinating data, safety controls and operating model readiness for emerging autonomy.</p>
+        <div class="card-foot"><span class="card-metric">CAV trial</span><span class="card-link">cavs.transurban.com <span class="arrow">↗</span></span></div>
+      </a>
+    </div>
+    <div class="row-list">
+      <div class="row reveal">
+        <div class="row-main"><span class="row-org">DTP · Rail Network</span><span class="row-title">Predictive Maintenance Platform (IoT + ML)</span></div>
+        <span class="row-desc">Deployed machine learning forecasting over live asset telemetry, cutting unplanned failures by 28% and saving $4M+ in maintenance costs.</span>
+      </div>
+      <a class="row reveal" href="https://engage.vic.gov.au/project/victorias30yearinfrastructurestrategy/page/transport" target="_blank" rel="noopener">
+        <div class="row-main"><span class="row-org">DTP · State recognised</span><span class="row-title">Victoria's 30 Year Transport Strategy, Technology and Data Future</span></div>
+        <span class="row-desc">Defined the technology future: what systems, what data, and what data integration architecture should drive transport decisions over 30 years. Recognised internally by the State of Victoria.</span>
+        <span class="row-arrow">↗</span>
+      </a>
+    </div>
+
+    <!-- THEME 3: CRITICAL SYSTEMS -->
+    <div class="tier-label reveal" style="margin-top:54px">Critical Systems and Assurance</div>
+    <p class="tier-note reveal">Safety-critical delivery and commercial assurance. Zero tolerance for failure, heavy on documentation and accountability.</p>
+    <div class="proj-grid">
+      <a class="card reveal" href="https://www.victrack.com.au/news/2024/essential-communications-services-migrated-to-4g" target="_blank" rel="noopener">
+        <div class="card-org"><span>V/Line</span><span class="theme">Critical Systems</span></div>
+        <h4>RRCN 3G→4G Comms Migration</h4>
+        <p>Migration of essential rail communications services to 4G. A safety-critical systems engineering programme with zero tolerance for service interruption.</p>
+        <div class="card-foot"><span class="card-metric">Network-wide</span><span class="card-link">victrack.com.au <span class="arrow">↗</span></span></div>
+      </a>
+      <a class="card reveal" href="https://www.vic.gov.au/melbourne-train-refranchising" target="_blank" rel="noopener">
+        <div class="card-org"><span>Victorian Government</span><span class="theme">Governance / Commercial</span></div>
+        <h4>Metropolitan Rail Refranchising</h4>
+        <p>Operational oversight, assurance and commercial readiness across a major metropolitan rail franchise transition. High stakes procurement in a compliance heavy environment.</p>
+        <div class="card-foot"><span class="card-metric">Statewide franchise</span><span class="card-link">vic.gov.au <span class="arrow">↗</span></span></div>
+      </a>
+    </div>
+    <div class="row-list">
+      <a class="row reveal" href="https://bigbuild.vic.gov.au/projects/bendigo-and-echuca-line-upgrade" target="_blank" rel="noopener">
+        <div class="row-main"><span class="row-org">V/Line</span><span class="row-title">Bendigo and Echuca Line Upgrade</span></div>
+        <span class="row-desc">Regional line upgrade programme across the corridor, with asset and infrastructure delivery end to end.</span>
+        <span class="row-arrow">↗</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section id="industries">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><span class="sec-kicker">Where I've Worked</span></div>
+    <h2 class="sec-title reveal">Multi-industry. Regulated. Safety-critical.</h2>
+    <p class="sec-intro reveal">The safety-critical claim isn't a slogan, it's where I've actually delivered. Direct experience across the sectors below, among others, where getting it wrong has real consequences, which is exactly where AI adoption is hardest and matters most.</p>
+    <div class="ind-grid reveal">
+      <div class="ind"><div class="ind-n">01</div><h4>Transport and Public Transit</h4><p>V/Line, Metro Trains, Yarra Trams and light rail. Heavy and urban rail networks.</p></div>
+      <div class="ind"><div class="ind-n">02</div><h4>Roads and Major Infrastructure</h4><p>CityLink, West Gate Tunnel. Major toll road and tunnel networks.</p></div>
+      <div class="ind"><div class="ind-n">03</div><h4>Utilities</h4><p>AGL, Origin, Sydney Water. Energy and water utility environments.</p></div>
+      <div class="ind"><div class="ind-n">04</div><h4>Healthcare</h4><p>Royal North Shore, Northern Beaches and Westmead Hospitals. Clinical settings.</p></div>
+      <div class="ind"><div class="ind-n">05</div><h4>Mining</h4><p>Coal mining and mine sites around Brisbane. Heavy industry operations.</p></div>
+      <div class="ind"><div class="ind-n">06</div><h4>Defence</h4><p>Army and Air Force environments. High security, high accountability settings.</p></div>
+      <div class="ind"><div class="ind-n">07</div><h4>FMCG and Manufacturing</h4><p>Manufacturing, production and fast moving consumer goods environments.</p></div>
+      <div class="ind"><div class="ind-n">08</div><h4>Hospitality and Aged Care</h4><p>Hospitality and aged care facilities. People facing, compliance bound operations.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section id="capabilities">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><span class="sec-kicker">Capability Map</span></div>
+    <h2 class="sec-title reveal">What I lead.</h2>
+    <p class="sec-intro reveal">The operating capabilities behind the work. The difference between using AI and being the person who makes an organisation able to adopt it.</p>
+    <div class="cap-grid reveal">
+      <div class="cap"><div class="ci">01</div><h4>AI Strategy and Adoption</h4><p>Use case prioritisation, roadmaps, business cases, workflow integration and the change work that gets AI actually used.</p></div>
+      <div class="cap"><div class="ci">02</div><h4>Responsible AI and Governance</h4><p>Practitioner input to responsible AI frameworks, risk controls, model limitation registers, human oversight and assurance readiness.</p></div>
+      <div class="cap"><div class="ci">03</div><h4>Executive and Stakeholder Navigation</h4><p>Reporting to executives and translating between the most senior people in the room and the most technical. Winning over risk owners, probity and sceptics, and turning resistance into permission to proceed.</p></div>
+      <div class="cap"><div class="ci">04</div><h4>Regulated Implementation</h4><p>Procurement, probity, safety, assurance and public sector accountability in compliance heavy environments.</p></div>
+      <div class="cap"><div class="ci">05</div><h4>Data and Systems Leadership</h4><p>Data governance, architecture, quality and systems integration. Turning messy, unorganised data into a single decision-ready base, the foundation good AI depends on.</p></div>
+      <div class="cap"><div class="ci">06</div><h4>Productivity and Transformation</h4><p>Manual effort reduction, cycle time improvement, standardised outputs and sharper executive decisions.</p></div>
+    </div>
+
+    <div class="standards reveal">
+      <div class="std-head">
+        <div class="std-label">◆ The standards I design and operate to</div>
+        <p class="std-intro">I don't bolt governance on after the fact. AI use, data, security, risk and operations are built to recognised management system standards from the start, which is what lets the work survive audit and scale into secure environments.</p>
+      </div>
+      <div class="std-domains">
+        <div class="std-domain">
+          <div class="sd-k">AI Management and Risk</div>
+          <div class="std-items">
+            <span class="std-chip">ISO/IEC 42001 · AI Management System</span>
+            <span class="std-chip">ISO/IEC 23894 · AI Risk Management</span>
+          </div>
+        </div>
+        <div class="std-domain">
+          <div class="sd-k">Security and Privacy</div>
+          <div class="std-items">
+            <span class="std-chip">ISO/IEC 27001 · Information Security</span>
+            <span class="std-chip">ISO/IEC 27701 · Privacy Information</span>
+          </div>
+        </div>
+        <div class="std-domain">
+          <div class="sd-k">Risk, Quality and Service</div>
+          <div class="std-items">
+            <span class="std-chip">ISO 31000 · Risk Management</span>
+            <span class="std-chip">ISO 9001 · Quality Management</span>
+            <span class="std-chip">ISO/IEC 20000-1 · IT Service Management</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI GOVERNANCE -->
+<section id="governance">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">06</span><span class="sec-kicker">AI Governance</span></div>
+    <h2 class="sec-title reveal">Governance that lets AI move, safely.</h2>
+    <p class="sec-intro reveal">For a bank, or any organisation a regulator can inspect, the job is not AI enthusiasm. It is making AI safe, explainable, auditable and regulator-ready, while still helping teams ship. I design and operate enterprise AI governance, I don't just write the policy and hand it over.</p>
+    <div class="cap-grid reveal">
+      <div class="cap"><div class="ci">01</div><h4>Enterprise Governance Frameworks</h4><p>Establish enterprise-wide AI governance that enables safe, transparent and accountable adoption, translating responsible AI principles into practical controls, decision rights, assurance processes and delivery guardrails.</p></div>
+      <div class="cap"><div class="ci">02</div><h4>Risk, Controls and Assurance</h4><p>Embed risk-based controls across the AI lifecycle: use case assessment, model risk classification, approval pathways, control testing, evidence capture, audit readiness and ongoing monitoring, with the rigour banks apply to cyber, privacy and financial risk.</p></div>
+      <div class="cap"><div class="ci">03</div><h4>Responsible and Ethical AI</h4><p>Fairness, transparency, explainability, privacy, security, human oversight and customer protection, converted from principle into operational standards and measurable controls rather than statements of intent.</p></div>
+      <div class="cap"><div class="ci">04</div><h4>Delivery Enablement</h4><p>Governance that helps teams move faster by making the safe path clear. Proportionate, embedded and scalable, partnering with AI, data, product, legal, privacy, risk and compliance instead of sitting as a late checkpoint.</p></div>
+      <div class="cap"><div class="ci">05</div><h4>Full Lifecycle Governance</h4><p>From use case intake and risk triage, through data assessment, model validation and deployment approval, to post-implementation monitoring, incident response and periodic review.</p></div>
+      <div class="cap"><div class="ci">06</div><h4>Executive and Board Visibility</h4><p>Give leaders a clear line of sight on what AI is in use, where the risk sits, which controls exist, what value is landing and what needs escalation, through plain reporting, governance forums, risk dashboards and escalation paths.</p></div>
+      <div class="cap"><div class="ci">07</div><h4>Third Party and Vendor AI Risk</h4><p>Govern externally supplied and embedded AI across SaaS, cloud and analytics platforms: data usage, contractual controls, security and privacy obligations, and ongoing assurance that partners meet the same risk standard.</p></div>
+      <div class="cap"><div class="ci">08</div><h4>Cross Functional Influence</h4><p>Align senior stakeholders across technology, data, risk, compliance, legal, privacy, cyber and internal audit around common standards and accountable decisions, without owning every delivery team.</p></div>
+      <div class="cap"><div class="ci">09</div><h4>Practical AI Literacy</h4><p>Enough hands-on understanding of AI to challenge model behaviour, data quality, limitations and monitoring directly, not just review it from a distance.</p></div>
+    </div>
+
+    <div class="standards reveal">
+      <div class="std-head">
+        <div class="std-label">◆ Governance frameworks I work to</div>
+        <p class="std-intro">I apply the leading AI governance and risk frameworks pragmatically, adapting them into a practical enterprise model rather than treating them as competing standards. NIST AI RMF for risk management and ISO/IEC 42001 for a structured management system are stronger used together.</p>
+      </div>
+      <div class="std-items">
+        <span class="std-chip cert">NIST AI RMF</span>
+        <span class="std-chip cert">ISO/IEC 42001 · AI Management System</span>
+        <span class="std-chip">EU AI Act</span>
+        <span class="std-chip">Australian Responsible AI Principles</span>
+        <span class="std-chip">ISO/IEC 23894 · AI Risk Management</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="sec-head reveal"><span class="sec-num">07</span><span class="sec-kicker">Contact</span></div>
+        <h2 class="foot-head reveal">Let's talk about getting AI <span class="em">past the hard part</span>.</h2>
+      </div>
+      <div class="foot-links reveal">
+        <a class="foot-link" href="https://www.linkedin.com/in/sidpandey6/" target="_blank" rel="noopener"><span>LinkedIn</span><span class="lbl">Connect ↗</span></a>
+        <a class="foot-link" href="mailto:siddhartha27@gmail.com"><span>siddhartha27@gmail.com</span><span class="lbl">Email →</span></a>
+        <a class="foot-link" href="#work"><span>Selected Work</span><span class="lbl">Back up ↑</span></a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>SID PANDEY · AI STRATEGY, DELIVERY AND GOVERNANCE · MULTI-REGULATED, SAFETY-CRITICAL INDUSTRIES</span>
+      <span>MELBOURNE · OPEN TO OPPORTUNITIES WORLDWIDE</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var els=document.querySelectorAll('.reveal');
+    function showAll(){els.forEach(function(el){el.classList.add('in')});}
+    // If IntersectionObserver is unavailable, just show everything.
+    if(!('IntersectionObserver' in window)){showAll();return;}
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -5% 0px'});
+    els.forEach(function(el,i){el.style.transitionDelay=(i%4*0.06)+'s';io.observe(el)});
+    // Safety net: guarantee nothing stays hidden for anchor-jump, print or full-page screenshot flows.
+    window.addEventListener('load',function(){setTimeout(showAll,1600)});
+  })();
+</script>
+</body>
+</html>
