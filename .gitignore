@@ -2,3 +2,4 @@ inner.html
 *.py
 *_b64.txt
 chart_b64.txt
+paper/
